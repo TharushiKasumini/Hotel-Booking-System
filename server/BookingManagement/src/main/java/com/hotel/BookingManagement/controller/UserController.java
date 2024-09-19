@@ -13,6 +13,11 @@ public class UserController {
 
     @Autowired
     private UserServiceInterface userService;
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        Response response=userService.deleteUser(userId);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
 
     @GetMapping("/all")
     @PreAuthorize("hasAuthority('ADMIN')")

@@ -31,6 +31,12 @@ public class BookingController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
 
     }
+    @DeleteMapping("/bookings/{id}")
+     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long roomId) {
+        Response response=bookingService.deleteBooking(roomId);
+        return  ResponseEntity.status(response.getStatusCode()).body(response);
+    }
 
     @GetMapping("/all")
     @PreAuthorize("hasAuthority('ADMIN')")
