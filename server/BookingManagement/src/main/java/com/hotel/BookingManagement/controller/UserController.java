@@ -12,5 +12,10 @@ public class UserController {
 
     @Autowired
     private UserServiceInterface userService;
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }

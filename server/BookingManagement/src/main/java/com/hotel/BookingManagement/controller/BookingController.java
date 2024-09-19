@@ -31,5 +31,10 @@ public class BookingController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
 
     }
+    @DeleteMapping("/bookings/{id}")
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }

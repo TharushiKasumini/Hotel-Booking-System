@@ -37,5 +37,10 @@ public class RoomController {
         Response response = roomService.addNewRoom(roomType, roomPrice, roomDescription);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
+@DeleteMapping("/rooms/{id}")
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long id) {
+        roomService.deleteRoom(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }
